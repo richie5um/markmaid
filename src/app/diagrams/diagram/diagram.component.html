@@ -1,0 +1,23 @@
+<div class="container">
+    <div class="col-xs-4">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <div class="btn-group pull-right" role="group" aria-label="...">
+                    <button class="btn btn-xs btn-warning" *ngIf="!isEditing" (click)="edit()">Edit</button>
+                    <button class="btn btn-xs btn-primary" *ngIf="isEditing && unsavedChanges"
+                        (click)="save()">Save</button>
+                    <button class="btn btn-xs btn-danger" *ngIf="isEditing" (click)="cancel()">Cancel</button>
+                </div>
+                <h3 class="panel-title">{{ diagram.title }}</h3>
+            </div>
+            <div class="panel-body">
+                <app-diagram-edit *ngIf="isEditing" [diagram]="diagram" (onDiagramUpdated)="diagramUpdated($event)">
+                </app-diagram-edit>
+                <app-diagram-nonedit *ngIf="!isEditing" [diagram]="diagram"></app-diagram-nonedit>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-6">
+        <app-diagram-view [diagramContent]="diagram.content"></app-diagram-view>
+    </div>
+</div>
