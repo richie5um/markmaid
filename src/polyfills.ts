@@ -62,6 +62,7 @@ import 'zone.js/dist/zone';  // Included with Angular CLI.
  * APPLICATION IMPORTS
  */
 
+declare var global: any
 (window as any).global = window; // gets rid of the first error
 global.Buffer = global.Buffer || require('buffer').Buffer; // which leads to buffer being required
 (window as any).process = { // which leads to window.process.version needing to be parsed
